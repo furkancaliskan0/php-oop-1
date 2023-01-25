@@ -13,7 +13,6 @@
         * {
             background-color: blue;
             color: beige;
-
         }
     </style>
 
@@ -24,29 +23,38 @@
         public $title;
         public $year;
         public $director;
+        public $language;
 
-        public function __construct($title, $year, $director)
+        public function __construct($title, $year, $director, $language)
         {
             $this->title = $title;
             $this->year = $year;
             $this->director = $director;
+            $this->language = $language;
         }
 
         public function getDescription()
         {
-            return "Il film '$this->title' è stato prodotto nel $this->year il direttore del film è  $this->director .";
+            return "<h2> Title: " . $this->title . "</h2>"
+                . "<h2> Year: " . $this->year . "</h2>"
+                . "<h2> Director: " . $this->director . "</h2>"
+                . "<h2> Language: (" . $this->language . ") </h2>";
         }
     }
 
-    $shawshank = new Movie("The Shawshank Redemption", 1994, "Frank Darabont");
-    $godfather = new Movie("The Godfather", 1972, "Francis Ford Coppola");
 
-    echo "<h1>";
-    echo $shawshank->getDescription() . "<br>";
-    echo "<br>";
-    echo $godfather->getDescription() . "<br>";
-    echo "</h1>";
+    $movies = [
+        new Movie("The Shawshank Redemption", "1994", "Frank Darabont", "English"),
+        new Movie("The Godfather", "1972", "Francis Ford Coppola", "English")
+    ];
+
+    foreach ($movies as $movie) {
+        echo "<h1>Movies</h1>";
+
+        echo $movie->getDescription();
+    }
     ?>
+
 
 </body>
 
